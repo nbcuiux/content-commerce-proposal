@@ -1,0 +1,33 @@
+$proximaNovaPath: '/assets/fonts/proxima-nova/Proxima-Nova-';
+
+@font-face {
+	font-family: 'Proxima-Nova';
+	src: url('#{$proximaNovaPath}Reg.eot');
+	src: url('#{$proximaNovaPath}Reg.eot?#iefix') format('embedded-opentype'), url('#{$proximaNovaPath}Reg.woff') format('woff'), url('#{$proximaNovaPath}Reg.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Proxima-Nova';
+	src: url('#{$proximaNovaPath}Bold.eot');
+	src: url('#{$proximaNovaPath}Bold.eot?#iefix') format('embedded-opentype'), url('#{$proximaNovaPath}Bold.woff') format('woff'), url('#{$proximaNovaPath}Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Proxima-Nova';
+	src: url('#{$proximaNovaPath}Light.eot');
+	src: url('#{$proximaNovaPath}Light.eot?#iefix') format('embedded-opentype'), url('#{$proximaNovaPath}Light.woff') format('woff'), url('#{$proximaNovaPath}Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Proxima-Nova';
+	src: url('#{$proximaNovaPath}Thin.eot');
+	src: url('#{$proximaNovaPath}Thin.eot?#iefix') format('embedded-opentype'), url('#{$proximaNovaPath}Thin.woff') format('woff'), url('#{$proximaNovaPath}Thin.ttf') format('truetype');
+	font-weight: 200;
+	font-style: normal;
+}

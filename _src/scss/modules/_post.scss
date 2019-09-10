@@ -1,0 +1,71 @@
+.post {
+	position: relative;
+	max-width: $post-max-width;
+	margin: 0 auto;
+	color: #2d2d2d;
+	background: #fff;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 50% 0;
+	transition: opacity 0.4s, transform 0.4s;
+
+	.is-introtransition & {
+		transition: opacity 0.35s ease-in-out 0.1s, transform 0.35s ease-in-out 0.1s;
+	}
+
+	&.is-hidden {
+		display: none;
+
+		.is-transition-topostfrompanels &,
+		.is-transition-topanelsfrompost & {
+			display: block;
+			opacity: 0;
+			transform: translate3d(0, 200px, 0);
+		}
+	}
+
+	.is-slideoff & {
+		opacity: 0;
+		user-select: none;
+	}
+
+	.is-slideoff.is-notransitions & {
+		transition: none;
+	}
+
+	.is-slideoff-left & {
+		transform: translate3d(-100%, 0, 0);
+	}
+
+	.is-slideoff-right & {
+		transform: translate3d(100%, 0, 0);
+	}
+
+	&:before,
+	&:after {
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		border-left: 5px solid rgba(0, 0, 0, 0.09);
+	}
+	&:before {
+		left: -5px;
+	}
+	&:after {
+		right: -5px;
+	}
+
+	@include breakpoint-mediaquery(post-borders) {
+		&:before,
+		&:after {
+			content: '';
+		}
+	}
+
+	@include breakpoint-mediaquery(horizontal) {
+		.js .is-intro & {
+			opacity: 0;
+			transform: translateY(200px);
+		}
+	}
+}

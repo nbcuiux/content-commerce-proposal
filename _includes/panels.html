@@ -1,0 +1,96 @@
+<div id="panels" class="panels pagecontent-item">
+
+	{% assign total = paginator.posts | size %}
+	{% if total == 0 %}
+		{% assign posts = site.posts %}
+		{% assign next_page_path = "/page2" %}
+	{% else %}
+		{% assign posts = paginator.posts %}
+		{% if paginator.next_page_path %}
+			{% assign next_page_path = paginator.next_page_path %}
+		{% else %}
+			{% assign next_page_path = false %}
+		{% endif %}
+	{% endif %}
+
+	{% for post in posts limit:site.per_page %}
+	<a class="panel color-{{ post.color }} {% if post.weeks == 4 %}panel--largest{% elsif post.weeks == 3 %}panel--larger{% elsif post.weeks == 2 %}panel--large{% endif %}" data-color="{{ post.color }}">
+		<div class="panel-content">
+			{% if post.isTotal != true %}
+			<div class="panel-callouts">
+				<div class="panel-callout">
+					<span class="panel-callout-text">Duration<br>in Weeks</span>
+					<div class="panel-callout-sq">
+						<span>{{ post.weeks }}</span>
+					</div>
+				</div>
+				<div class="panel-callout">
+					<span class="panel-callout-text">{% if post.people > 1 %}People{% elsif post.people == 1 %}Person{% else %}{% endif %}</span>
+					<div class="panel-callout-sq">
+						<span>{{ post.people }}</span>
+					</div>
+				</div>
+				<div class="panel-callout">
+					<span class="panel-callout-text">Hours</span>
+					<div class="panel-callout-sq">
+						<span>{{ post.hours }}</span>
+					</div>
+				</div>
+				{% if post.phase %}
+				<div class="panel-callout">
+					<div class="panel-callout-sq">
+						<span>{{ post.phase }}</span>
+					</div>
+					<span class="panel-callout-text"></span>
+				</div>
+				{% endif %}
+			</div>
+			<h1 class="panel-headline">{% if post.short_title %}{{ post.short_title }}{% else %}{{ post.title }}{% endif %}</h1>
+			<p class="panel-summary">{% if post.summary %}{{ post.summary }}{% else %}{{ post.excerpt | strip_html }}{% endif %}</p>
+			{% if post.hideCta %}{% else %}		
+			{% if post.user & post.pw %}
+			<div class="panel-cred">
+				<div class="panel-cred-row">
+					<span class="panel-cred-label">id</span>
+					<input type="text" class="panel-cred-input" value="{{ post.user }}" onclick="this.select()">
+				</div>
+				<div class="panel-cred-row">
+					<span class="panel-cred-label">pw</span>
+					<input type="text" class="panel-cred-input" value="{{ post.pw }}" onclick="this.select()">
+				</div>
+			</div>	
+			{% endif %}
+			<div class="panel-read" onclick="window.open('{{ post.example }}');">
+				<span class="panel-read-text smalltext">See Example</span>
+			</div>
+			{% endif %}
+		{% else %}
+		<div class="panel-totals">
+			<span class="panel-total-text">Totals</span>
+			<div class="panel-total">
+				<span class="panel-total-text">9</span>
+				<span class="panel-total-text-sm">Phases</span>
+			</div>
+			<div class="panel-total">
+				<span class="panel-total-text">20</span>
+				<span class="panel-total-text-sm">Weeks</span>
+			</div>
+			<div class="panel-total">
+				<span class="panel-total-text">3</span>
+				<span class="panel-total-text-sm">People</span>
+			</div>
+			<div class="panel-total">
+				<span class="panel-total-text">800</span>
+				<span class="panel-total-text-sm">Hours</span>
+			</div>
+		</div>
+		{% endif %}
+		</div>
+	</a>
+	{% endfor %}
+
+</div>
+
+{% if next_page_path %}
+<a id="panels-nav" class="panels-nav is-hidden" href="{{ next_page_path }}"></a>
+{% endif %}

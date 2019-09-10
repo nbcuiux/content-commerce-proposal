@@ -1,0 +1,126 @@
+#spreadhsheet-link {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -ms-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: flex-end;
+	-ms-align-items: flex-end;
+	align-items: flex-end;
+	outline: none;
+	border: none;
+	text-decoration: none;
+	z-index: 1;
+	position: fixed;
+	top: 14px;
+	left: 12px;
+	color: #898989;
+
+	i {
+		margin-right: 12px;
+		font-family: 'nbc-icons';
+		transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+		&:before {
+			top: 0;
+			left: 0;
+			height: 10px;
+			width: 10px;
+			font-size: 17px;
+			font-style: normal;
+			font-family: 'nbc-icons';
+			-webkit-font-smoothing: subpixel-antialiased;
+			background: transparent;
+			content: '\e057';
+
+			@media (max-width: 570px) {
+				font-size: 21px;
+			}
+		}
+	}
+	span {
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		border-bottom: solid 1px transparent;
+		transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+		@media (max-width: 570px) {
+			display: none;
+		}
+	}
+	&:hover {
+		i {
+			color: get-color('red');
+		}
+		span {
+			color: get-color('red');
+			border-color: get-color('red');
+		}
+	}
+}
+
+.headernavlink {
+	padding-left: 2px;
+	border-bottom: 1px solid transparent;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+
+	&.is-selected {
+		border-bottom: 1px solid get-color('navy');
+		transition: border-bottom 0.3s;
+
+		.is-darktheme & {
+			border-bottom: 1px solid white;
+		}
+	}
+}
+
+.headernavlink-label {
+	&:after {
+		color: get-color('navy');
+
+		.is-darktheme & {
+			color: white;
+		}
+	}
+}
+
+.headernavlink-logo {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 2;
+	width: 48px;
+	height: 48px;
+	margin: 3px 0 0 0;
+	color: #000;
+	font-family: 'icons';
+	font-size: 25px;
+	text-decoration: none;
+	transform-origin: 50% 100%;
+	transition: background-color $header-open-duration;
+
+	.is-darktheme & {
+		color: #fff;
+	}
+
+	&:hover,
+	&.bounce-animation {
+		animation: bounce-animation 0.5s 1;
+		transform: none;
+	}
+
+	&:after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 10px;
+		width: 10px;
+		background: transparent;
+		content: '';
+	}
+
+}

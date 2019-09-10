@@ -1,0 +1,31 @@
+.slidelink {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.slidelink-label {
+	display: block;
+	position: relative;
+	transition: transform 0.3s;
+	vertical-align: middle;
+
+	.is-selected & {
+		transform: translate3d(0, 100%, 0);
+	}
+
+	.slidelink:hover & {
+		.no-touch & {
+			transform: translate3d(0, 100%, 0);
+		}
+	}
+
+	&:after {
+		position: absolute;
+		top: -100%;
+		right: 0;
+		left: 0;
+		content: attr(data-label);
+	}
+}

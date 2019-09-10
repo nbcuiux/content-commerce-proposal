@@ -1,0 +1,23 @@
+$colors: (
+	'blue':   desaturate(#F37021, 20%),
+	'green':  desaturate(#0DB14B, 20%),
+	'lime':   desaturate(lighten(#0DB14B, 10%), 50%),
+	'navy':   desaturate(darken(#0089d0, 10%), 20%),
+	'orange': desaturate(#FCB711, 20%),
+	'purple': desaturate(#6460AA, 20%),
+	'red':    desaturate(#CC0C4C, 20%)
+);
+
+$color-twitter:    #32abdf;
+$color-linkedin:   #1875b2;
+$color-email:      #e24e4b;
+$color-codepen:    #72616e;
+$color-facebook:   #3b5998;
+$color-pinterest:  #c92228;
+$color-header:     #f3f3f3;
+$color-headeropen: #fcfcfc;
+
+// dark theme
+$color-dark-body:       #222;
+$color-dark-header:     #111;
+$color-dark-headeropen: #000;

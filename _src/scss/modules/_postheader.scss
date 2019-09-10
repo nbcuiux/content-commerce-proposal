@@ -1,0 +1,20 @@
+.postheader {
+	padding: 28px 4% 5px;
+	text-align: center;
+
+	h1 {
+		max-width: 640px;
+		margin: 8px auto 0;
+		font-size: 40px;
+	}
+
+	@include breakpoint-mediaquery(post-padding) {
+		padding: 28px 0 5px;
+	}
+}
+
+.postheader-meta {
+	padding: 0 2px;
+	margin: 3px 0 0;
+	color: #c8c8c8;
+}

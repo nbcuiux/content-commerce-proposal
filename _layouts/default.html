@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% include message.html %}
+<html class="no-js no-touch">
+
+	{% include head.html %}
+
+	<body class="{%if page.type != 'headerpage'%} is-panels is-intro {% endif %}{% if paginator %}is-panels{% elsif page.type == 'headerpage'%} is-header is-headeropen{% elsif page.type == 'labpage' %}is-lab is-darktheme{% elsif page.color %}is-post color-{{ page.color }}{% else %}is-panels{% endif %}"{% if page.color %} data-color="{{ page.color }}"{% endif %}>
+
+		{% include browserUpgrade.html %}
+
+		{% include nav.html %}
+		{% include header.html %}
+
+		<div id="pagecontent" class="pagecontent{% if page.type == 'headerpage' %} is-disabled{% endif %}">
+
+			<nav class="pagenav">
+				<a id="siteheader-close" class="siteheader-close" href="{{ site.baseurl }}/" aria-label="Close header" data-router></a>
+				<a class="post-nav-close{% if page.path contains '_posts/' %}{% else %} is-hidden{% endif %}" href="{{ site.baseurl }}/" aria-label="Close article" data-router>x</a>
+				<a class="post-nav post-nav-next{% if page.next.url %}{% else %} is-hidden{% endif %}" href="{{page.next.url}}" aria-label="Read the next article: {{page.next.title}}" data-router></a>
+				<a class="post-nav post-nav-previous{% if page.previous.url %}{% else %} is-hidden{% endif %}" href="{{page.previous.url}}" aria-label="Read the previous article: {{page.previous.title}}" data-router></a>
+			</nav>
+
+			{{ content }}
+
+		</div>
+
+		{% include footer.html %}
+
+	</body>
+</html>

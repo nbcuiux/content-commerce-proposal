@@ -1,0 +1,11 @@
+<header id="siteheader" class="siteheader">
+
+	<div id="about-page" class="siteheader-page {% if page.permalink == '/about/' %}is-visible{% endif %}">
+		{% include about.html %}
+	</div>
+
+	<div id="contact-page" class="siteheader-page {% if page.permalink == '/contact/' %}is-visible{% endif %}">
+		{% include contact.html %}
+	</div>
+
+</header>

@@ -1,0 +1,22 @@
+@function breakpoint($name) {
+	@return map-get($breakpoints, $name);
+}
+
+@function breakpoints-json() {
+	$json: "{";
+	@each $name, $bp in $breakpoints {
+		$bp: breakpoint($name);
+		@if map-get($bp, silent) != true {
+			$from: map-get($bp, from);
+			$to: map-get($bp, to);
+			@if type-of($from) != "number" {
+				$from: 0;
+			}
+			@if type-of($to) != "number" {
+				$to: "Infinity";
+			}
+			$json: $json + '"#{$name}":{"from":"#{$from}","to":"#{$to}"},';
+		}
+	}
+	@return str-slice($json, 0, str-length($json) - 1) + "}";
+}

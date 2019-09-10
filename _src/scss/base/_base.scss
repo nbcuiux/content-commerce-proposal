@@ -1,0 +1,97 @@
+html,
+body {
+	height: 100%;
+}
+
+html {
+	box-sizing: border-box;
+
+	&:after {
+		display: none;
+		content: '#{breakpoints-json()}';
+	}
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+	transition-timing-function: ease-out;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent; // putting this here for now but should probably (maybe?) be per element
+}
+
+@include selection {
+	color: white;
+	background: get-color('purple');
+}
+
+body {
+	font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+
+	&.is-muted {
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+
+		&:after {
+			position: fixed;
+			z-index: 100;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			content: "";
+		}
+	}
+
+	&.is-darktheme {
+		background-color: $color-dark-body;
+	}
+
+	&.is-header {
+		overflow: hidden;
+	}
+
+	@include breakpoint-mediaquery(horizontal) {
+		&.is-panels.is-intro,
+		&.is-panels.is-introtransition {
+			&:after {
+				display: block;
+				position: fixed;
+				z-index: 1;
+				left: 50%;
+				top: 50%;
+				margin: -85px 0 0 -85px;
+				color: #eee;
+				font-family: 'nbc-icons';
+				font-size: 170px;
+				content: '\e056';
+			}
+		}
+
+		&.is-post {
+			transition: background 0.3s;
+		}
+	}
+	// &::-webkit-scrollbar-track {
+	// 	height: 3px;
+	// 	background-color: transparent;
+	// }
+
+	// &::-webkit-scrollbar {
+	// 	height: 3px;
+	// 	background-color: transparent;
+	// }
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #000000;
+	}
+}
+
+a {
+	&:focus {
+    	outline: none;
+    }
+}

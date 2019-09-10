@@ -1,0 +1,15 @@
+.pagecontent {
+	position: relative;
+	z-index: 2;
+	min-height: 100%;
+	padding-top: $site-nav-height;
+}
+
+.pagecontent-item {
+	transform: translate3d(0, 0, 0);
+	transition: transform $header-open-duration;
+
+	.is-headeropen & {
+		transform: translate3d(0, $site-header-height - $site-nav-height, 0);
+	}
+}
